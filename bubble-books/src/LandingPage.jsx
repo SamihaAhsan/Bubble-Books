@@ -18,7 +18,7 @@ function LandingPage() {
         </nav>
 
         <div className="nav-actions">
-          <a className="login-link" href="#about">Log in</a>
+          <a className="login-link" href="/login">Log in</a>
           <a className="button button-small button-primary" href="/signup">
             Get started
           </a>

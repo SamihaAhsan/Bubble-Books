@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 public class AuthService {
 
     public void signup(User user) {
+        // add exception for handling not valid user info 
+        
 
         
     }

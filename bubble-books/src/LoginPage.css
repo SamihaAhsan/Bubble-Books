@@ -1,0 +1,32 @@
+.login-card {
+  min-height: 480px;
+}
+
+.login-form-content {
+  align-self: center;
+}
+
+.login-form-content h1 {
+  max-width: 400px;
+}
+
+.login-fields {
+  grid-template-columns: 1fr;
+  gap: 17px;
+}
+
+.login-page .signup-note a {
+  color: var(--rose);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.login-page .signup-note a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 760px) {
+  .login-card {
+    min-height: 0;
+  }
+}
