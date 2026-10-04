@@ -1,18 +1,19 @@
-.login-card {
-  min-height: 480px;
-}
-
-.login-form-content {
-  align-self: center;
+.login-layout {
+  width: min(100%, 560px);
+  margin: 5vh auto 0;
 }
 
 .login-form-content h1 {
-  max-width: 400px;
+  max-width: 500px;
 }
 
 .login-fields {
   grid-template-columns: 1fr;
-  gap: 17px;
+  gap: 25px;
+}
+
+.login-page .signup-intro {
+  margin-bottom: 35px;
 }
 
 .login-page .signup-note a {
@@ -26,7 +27,7 @@
 }
 
 @media (max-width: 760px) {
-  .login-card {
-    min-height: 0;
+  .login-layout {
+    margin-top: 2vh;
   }
 }

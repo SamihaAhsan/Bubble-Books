@@ -29,32 +29,50 @@ main {
 }
 
 .brand-mark {
-  width: 29px;
-  height: 26px;
   position: relative;
-  display: inline-block;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  border: 1px solid #e8bdc2;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  background: #f9e4e5;
+}
+
+.brand-mark::after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  position: absolute;
+  bottom: 0;
+  left: 4px;
+  border-bottom: 1px solid #e8bdc2;
+  border-left: 1px solid #e8bdc2;
+  background: #f9e4e5;
+  transform: rotate(-35deg) skew(-8deg, -8deg);
 }
 
 .brand-mark span {
-  position: absolute;
-  bottom: 2px;
-  width: 13px;
-  height: 20px;
-  border: 2px solid var(--rose);
-  border-radius: 8px 8px 3px 3px;
-  background: var(--pink);
+  z-index: 1;
+  width: 7px;
+  height: 10px;
+  border: 1px solid #a55f65;
+  background: #fffaf4;
 }
 
 .brand-mark span:first-child {
-  left: 2px;
-  transform: rotate(-13deg);
+  border-right: 0;
+  border-radius: 3px 0 0 2px;
+  transform: skewY(8deg);
 }
 
 .brand-mark span:last-child {
-  right: 2px;
-  transform: rotate(13deg);
-  background: #f6d9b9;
-  border-color: #d9a678;
+  border-left: 1px solid #a55f65;
+  border-radius: 0 3px 2px 0;
+  transform: skewY(-8deg);
 }
 
 .main-nav,

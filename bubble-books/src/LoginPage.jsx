@@ -16,15 +16,8 @@ function LoginPage() {
       </header>
 
       <section className="signup-content" aria-labelledby="login-title">
-        <div className="signup-card login-card">
-          <div className="signup-card-art" aria-hidden="true">
-            <span className="signup-art-sparkle">✦</span>
-            <div className="signup-art-book signup-art-book-one" />
-            <div className="signup-art-book signup-art-book-two" />
-            <div className="signup-art-flower">✿</div>
-          </div>
-
-          <div className="signup-form-content login-form-content">
+        <div className="auth-layout login-layout">
+          <div className="auth-form-content login-form-content">
             <span className="eyebrow">Welcome back, book lover</span>
             <h1 id="login-title">Let&apos;s pick up where you left off</h1>
             <p className="signup-intro">

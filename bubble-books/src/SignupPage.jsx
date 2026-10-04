@@ -15,15 +15,8 @@ function SignupPage() {
       </header>
 
       <section className="signup-content" aria-labelledby="signup-title">
-        <div className="signup-card">
-          <div className="signup-card-art" aria-hidden="true">
-            <span className="signup-art-sparkle">✦</span>
-            <div className="signup-art-book signup-art-book-one" />
-            <div className="signup-art-book signup-art-book-two" />
-            <div className="signup-art-flower">✿</div>
-          </div>
-
-          <div className="signup-form-content">
+        <div className="auth-layout">
+          <div className="auth-form-content">
             <span className="eyebrow">Your next chapter starts here</span>
             <h1 id="signup-title">Join the bookish bunch</h1>
             <p className="signup-intro">
