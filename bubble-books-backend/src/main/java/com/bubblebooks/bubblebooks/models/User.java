@@ -10,7 +10,6 @@ import jakarta.persistence.Table;
 public class User {
     @Id
     private UUID user_id;
-    
     private String username;
     private String password;
     private String email;
