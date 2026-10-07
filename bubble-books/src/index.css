@@ -1,0 +1,42 @@
+:root {
+  font-family: 'Segoe UI', sans-serif;
+  color: #443b37;
+  background: #fffaf4;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --cream: #fffaf4;
+  --ink: #443b37;
+  --muted-ink: #796f68;
+  --rose: #a55f65;
+  --rose-dark: #8d4f56;
+  --pink: #f4d6d0;
+  --serif: Georgia, 'Times New Roman', serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+::selection {
+  color: #443b37;
+  background: #f0d4cf;
+}

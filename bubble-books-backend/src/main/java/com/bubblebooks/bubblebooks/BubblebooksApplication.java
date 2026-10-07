@@ -9,5 +9,4 @@ public class BubblebooksApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BubblebooksApplication.class, args);
 	}
-
 }
