@@ -3,6 +3,7 @@ import java.util.UUID;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
 
 @Entity
 @Table(name="account")
@@ -10,13 +11,17 @@ import jakarta.persistence.Table;
 public class User {
     @Id
     private UUID user_id;
+    
     private String username;
     private String password;
+
+    @Email 
     private String email;
+
     private String firstName;
     private String lastName;
-    private String city;
-    private String country;
+    private String city; //add verification
+    private String country; //add verification
 
     
 
