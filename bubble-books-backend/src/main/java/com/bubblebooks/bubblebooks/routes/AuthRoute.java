@@ -19,6 +19,7 @@ public class AuthRoute {
 
     @PostMapping("/signup")
     public ResponseEntity<User> signup(@Valid @RequestBody User user) {
+        System.out.println("Received username: " + user.getUsername());
         authService.signup(user);
         return ResponseEntity.ok(user);
     }

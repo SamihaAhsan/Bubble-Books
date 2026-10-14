@@ -1,15 +1,23 @@
 package com.bubblebooks.bubblebooks.models;
 import java.util.UUID;
+
+import org.hibernate.annotations.UuidGenerator;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
+
 
 @Entity
 @Table(name="account")
 
 public class User {
     @Id
+    @GeneratedValue
+    @UuidGenerator
+    
     private UUID user_id;
     
     private String username;
@@ -24,6 +32,9 @@ public class User {
     private String country; //add verification
 
     
+    public User() {
+        // Default constructor for JPA
+    }
 
     public User(String username, String password, String email, String firstName, String lastName, String city, String country) {
         this.username = username;
