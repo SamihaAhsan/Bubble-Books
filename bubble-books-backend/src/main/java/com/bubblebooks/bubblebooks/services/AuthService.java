@@ -73,10 +73,6 @@ public void signup(User user) {
         throw new IllegalArgumentException("Email cannot exceed 254 characters");
     }
 
-    System.out.println("Checking email...");
-    boolean emailExists = accountRepo.existsByEmail(user.getEmail());
-    System.out.println("Email check completed: " + emailExists);
-
     //checks for existing username and email
     if (accountRepo.existsByUsername(user.getUsername())) {
         throw new IllegalArgumentException("Username already exists");
@@ -130,8 +126,4 @@ public void signup(User user) {
         );
     }*/
 
-            @GetMapping("/home")
-public String home() {
-    return "Welcome to Bubble Books!";
-}
 }

@@ -31,6 +31,11 @@ public class AuthRoute {
 
     }*/
 
+         @GetMapping("/home")
+public String home() {
+    return "Welcome to Bubble Books!";
+}
+
     }
 
    
