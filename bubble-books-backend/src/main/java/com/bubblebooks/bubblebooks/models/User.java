@@ -3,6 +3,7 @@ import java.util.UUID;
 
 import org.hibernate.annotations.UuidGenerator;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -20,13 +21,17 @@ public class User {
     
     private UUID user_id;
     
+    @Column(name = "username")
     private String username;
+
     private String password;
 
     @Email 
     private String email;
 
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
     private String city; //add verification
     private String country; //add verification
@@ -47,7 +52,7 @@ public class User {
         this.user_id = java.util.UUID.randomUUID();
     }
 
-    public User(String username, String password, String email, String firstName, String lastName, String city, String country, UUID user_id) {
+    public User(UUID user_id, String username, String password, String email, String firstName, String lastName, String city, String country) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -58,6 +63,10 @@ public class User {
         this.user_id = user_id;
     }
 
+    public UUID getId(){
+        return user_id;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -66,11 +75,11 @@ public class User {
         this.username = username;
     }
 
-    private String getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    private void setPassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bubblebooks.bubblebooks.models.User;
 import com.bubblebooks.bubblebooks.services.AuthService;
 import jakarta.validation.Valid;
+import com.bubblebooks.bubblebooks.dto.Logindto;
 
 @RestController
 public class AuthRoute {
@@ -21,17 +22,14 @@ public class AuthRoute {
     public ResponseEntity<User> signup(@Valid @RequestBody User user) {
         System.out.println("Received username: " + user.getUsername());
         authService.signup(user);
+        return ResponseEntity.ok(user);}
+
+     /*@GetMapping("/login")
+    public ResponseEntity<User> login(@Valid @RequestBody Logindto login) {
+        User user = authService.login(login);
         return ResponseEntity.ok(user);
-    }
 
-     @GetMapping("/login")
-    public ResponseEntity<User> login(@RequestBody User user) {
-        authService.login(user);
-        return ResponseEntity.ok(user);
-
-    }
-
-
+    }*/
 
     }
 
