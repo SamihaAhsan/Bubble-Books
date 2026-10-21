@@ -23,7 +23,7 @@ function SignupPage() {
               Create your Bubble Books profile and get ready to pass the magic on.
             </p>
 
-            <form className="signup-form" onSubmit={(event) => event.preventDefault()}>
+            <form className="signup-form" onSubmit={handleSignup}>
               <div className="signup-fields">
                 <label className="signup-field">
                   <span>First name</span>
@@ -103,5 +103,32 @@ function SignupPage() {
     </main>
   )
 }
+
+async function handleCSRFToken() {
+  const response = await fetch(
+    "http://localhost:8080/csrf",
+    {
+      method: "GET",
+      credentials: "include"
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch CSRF token");
+  }
+
+  const data = await response.json();
+
+  return data;
+}
+
+function handleSignup(event){
+  const response = await fetch("http://localhost:8080/signup", {
+  method: "POST",
+   headers: {
+    "": "application/x-www-form-urlencoded",
+  },
+}}
+
 
 export default SignupPage
