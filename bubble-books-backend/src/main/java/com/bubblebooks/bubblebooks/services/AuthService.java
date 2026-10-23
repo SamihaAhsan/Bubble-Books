@@ -26,6 +26,8 @@ public class AuthService implements UserDetailsService  {
     
 public void signup(User user) {
 
+    System.out.println("username:" + user.getUsername());
+
     // checks whether information meets requirments
      System.out.println("Received username again: " + user.getUsername());
     // Username: VARCHAR(100)
