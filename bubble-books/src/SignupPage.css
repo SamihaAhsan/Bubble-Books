@@ -123,6 +123,233 @@
   align-items: center;
 }
 
+.signup-form .signup-error {
+  width: min(100%, 560px);
+}
+
+.signup-error {
+  margin: 20px 0 0;
+  color: #a33d46;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.signup-next:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.preferences-layout {
+  width: min(100%, 780px);
+  margin: 4px auto 0;
+}
+
+.preferences-heading {
+  text-align: center;
+}
+
+.preferences-heading h1,
+.preferences-complete h1 {
+  margin: 11px 0 9px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  line-height: 1.15;
+}
+
+.preferences-heading .signup-intro {
+  margin-bottom: 30px;
+}
+
+.preferences-form fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.preferences-form legend {
+  padding: 0;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.preferences-hint {
+  margin: 7px 0 17px;
+  color: var(--muted-ink);
+  font-size: 13px;
+}
+
+.genre-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.genre-option {
+  min-height: 40px;
+  padding: 0 17px;
+  border: 1px solid #e7ddd1;
+  border-radius: 999px;
+  color: #665a52;
+  background: rgba(255, 253, 249, 0.72);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: border-color 150ms ease, color 150ms ease, background 150ms ease;
+}
+
+.genre-option:hover,
+.genre-option.is-selected {
+  border-color: #d59ca1;
+  color: var(--rose-dark);
+  background: #f9e4e5;
+}
+
+.genre-option:focus-visible,
+.add-book-button:focus-visible,
+.remove-book-button:focus-visible,
+.skip-preferences-button:focus-visible {
+  outline: 3px solid #dba0a8;
+  outline-offset: 3px;
+}
+
+.preferences-form .wanted-books-fieldset {
+  margin-top: 34px;
+}
+
+.wanted-books-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.wanted-book-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 24px;
+  padding: 19px 21px;
+  border: 1px solid #eee4d9;
+  border-radius: 14px;
+  background: rgba(255, 253, 249, 0.75);
+}
+
+.wanted-book-row .signup-field {
+  gap: 6px;
+}
+
+.wanted-book-row .signup-field input {
+  height: 42px;
+  font-size: 14px;
+}
+
+.remove-book-button,
+.skip-preferences-button {
+  padding: 8px 0;
+  border: 0;
+  color: var(--muted-ink);
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.remove-book-button:hover,
+.skip-preferences-button:hover {
+  color: var(--rose-dark);
+}
+
+.add-book-button {
+  margin-top: 14px;
+  padding: 5px 0;
+  border: 0;
+  color: var(--rose-dark);
+  background: transparent;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.add-book-button span {
+  margin-right: 5px;
+  font-size: 17px;
+  vertical-align: -1px;
+}
+
+.preferences-error {
+  margin-top: 22px;
+  text-align: left;
+}
+
+.preferences-actions {
+  margin-top: 29px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.preferences-actions .button {
+  min-width: 205px;
+  border: 0;
+  cursor: pointer;
+}
+
+.preferences-complete {
+  width: min(100%, 620px);
+  margin: 5vh auto 0;
+  text-align: center;
+}
+
+.complete-flower {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--rose);
+  font-size: 36px;
+}
+
+.preferences-complete h1 {
+  margin-bottom: 14px;
+}
+
+.preferences-complete .signup-intro {
+  margin-bottom: 22px;
+}
+
+.complete-summary {
+  margin: 0 auto 18px;
+  color: var(--muted-ink);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.complete-summary strong,
+.complete-book-summary > strong {
+  color: var(--ink);
+}
+
+.complete-book-summary {
+  margin: 0 auto 24px;
+  color: var(--muted-ink);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.complete-book-summary ul {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.complete-book-summary li span {
+  color: #998c81;
+}
+
 @media (max-width: 760px) {
   .signup-page {
     width: min(100% - 40px, 560px);
@@ -140,8 +367,17 @@
     font-size: 37px;
   }
 
+  .preferences-heading h1,
+  .preferences-complete h1 {
+    font-size: 37px;
+  }
+
   .signup-fields {
     gap: 24px 28px;
+  }
+
+  .wanted-book-row {
+    gap: 18px;
   }
 }
 
@@ -165,5 +401,35 @@
 
   .signup-next {
     margin-top: 31px;
+  }
+
+  .preferences-heading h1,
+  .preferences-complete h1 {
+    font-size: 34px;
+  }
+
+  .preferences-form legend {
+    font-size: 20px;
+  }
+
+  .wanted-book-row {
+    grid-template-columns: 1fr;
+    gap: 13px;
+    padding: 16px;
+  }
+
+  .remove-book-button {
+    justify-self: start;
+    padding-top: 0;
+  }
+
+  .preferences-actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .preferences-actions .button {
+    width: 100%;
   }
 }
