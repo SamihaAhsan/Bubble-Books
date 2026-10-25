@@ -24,14 +24,9 @@ public class AuthRoute {
         authService.signup(user);
         return ResponseEntity.ok(user);}
 
-     /*@GetMapping("/login")
-    public ResponseEntity<User> login(@Valid @RequestBody Logindto login) {
-        User user = authService.login(login);
-        return ResponseEntity.ok(user);
+     
 
-    }*/
-
-         @GetMapping("/home")
+         @PostMapping("/books")
 public String home() {
     return "Welcome to Bubble Books!";
 }

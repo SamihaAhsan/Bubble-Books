@@ -22,16 +22,24 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
+                .cors(cors -> {})
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login", "/signup", "/csrf", "/error").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
-                        .defaultSuccessUrl("/home", true)
-                        .permitAll()
-                )
+    .loginPage("/login")
+    .loginProcessingUrl("/login")
+    .successHandler((request, response, authentication) -> {
+        response.setStatus(200);
+    })
+    .failureHandler((request, response, exception) -> {
+        response.setStatus(401);
+    })
+    .permitAll()
+)
                 .logout(logout -> logout
-                        .logoutSuccessUrl("/login?logout")
+                        .logoutSuccessUrl("http://localhost:5173/login?logout")
                 )
                 .build();
     }
