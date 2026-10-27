@@ -24,7 +24,7 @@ function LoginPage() {
     });
 
     if (response.ok) {
-      window.location.href = "/home";
+      window.location.href = '/login/preferences'
     } else if (response.status === 401) {
       alert("Incorrect username or password.");
     } else {
