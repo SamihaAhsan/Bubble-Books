@@ -1,11 +1,13 @@
 package com.bubblebooks.bubblebooks.models;
 import java.util.UUID;
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 import org.hibernate.annotations.UuidGenerator;
 
 import jakarta.persistence.GeneratedValue;
 
+@Entity(name="books")
 public class Book {
 
     @Id
@@ -20,16 +22,14 @@ public class Book {
 
      private String author_last_name;
      private String summary;
-     private String[] genre; 
     
 
 
- public Book(String book_name, String author_first_name, String author_last_name, String summary, String[] genre) {
+ public Book(String book_name, String author_first_name, String author_last_name, String summary) {
      this.book_name = book_name;
      this.author_first_name = author_first_name;
      this.author_last_name = author_last_name;
      this.summary = summary;
-     this.genre = genre;
      this.book_id = java.util.UUID.randomUUID();
  }
 
@@ -39,7 +39,6 @@ public class Book {
      this.author_last_name = author_last_name;
      this.summary = summary;
      this.book_id = book_id;
-     this.genre = genre;
  }
 
  
@@ -81,14 +80,6 @@ public class Book {
 
     public void setSummary(String summary) {
         this.summary = summary;
-    }
-
-    public String[] getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String[] genre) {
-        this.genre = genre;
     }
 
  }

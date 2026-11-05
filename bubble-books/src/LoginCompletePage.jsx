@@ -28,7 +28,7 @@ function SignupCompletePage({ selectedGenres, wantedBooks }) {
           </ul>
         </div>
       )}
-      <a className="button button-primary" href="/">
+      <a className="button button-primary" href="/app">
         Explore Bubble Books <span aria-hidden="true">→</span>
       </a>
     </div>

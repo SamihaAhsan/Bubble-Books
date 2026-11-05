@@ -2,8 +2,13 @@ import LandingPage from './LandingPage.jsx'
 import LoginPage from './LoginPage.jsx'
 import SignupPage from './SignupPage.jsx'   
 import LoginPreferencesPage from './LoginPreferencesPage.jsx'
+import Dashboard from './Dashboard.jsx'
 
 function App() {
+  if (window.location.pathname === '/app') {
+    return <Dashboard />
+  }
+
   if (window.location.pathname === '/login') {
     return <LoginPage />
   }

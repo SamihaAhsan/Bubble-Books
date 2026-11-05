@@ -4,8 +4,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.security.core.Authentication;
 import com.bubblebooks.bubblebooks.dto.Genresdto;
+import com.bubblebooks.bubblebooks.models.Book;
 import com.bubblebooks.bubblebooks.services.AuthService;
 import com.bubblebooks.bubblebooks.services.MyBooksService;
 import jakarta.validation.Valid;
@@ -19,17 +20,18 @@ public class MyBookRoute {
         this.bookService = bookService;
     }
 
-    @PostMapping("/my-genres")
-    public ResponseEntity<Genresdto> saveMyGenres(@Valid @RequestBody String[] genres) {
-        bookService.saveMyGenres(genres);
-        return ResponseEntity.ok(new Genresdto(genres, null));}
+    @PostMapping({"/my-genres"})
+    public ResponseEntity<String[]> saveMyGenres(@Valid @RequestBody String[] genres, Authentication authentication) {
+        bookService.saveMyGenres(genres, authentication);
+        return ResponseEntity.ok(genres);}
     
     
-        /*  @PostMapping("/my-books")
-    public ResponseEntity<User> signup(@Valid @RequestBody User user) {
-        System.out.println("Received username: " + user.getUsername());
-        bookService.signup(user);
-        return ResponseEntity.ok(user);}*/
+  @PostMapping("/my-books")
+    public ResponseEntity<Book> signup(@Valid @RequestBody Book[] books) {
+        for (Book book : books) {
+            bookService.saveMyBooks(book);
+        }
+        return ResponseEntity.ok(books[0]);}*/
      
 
        

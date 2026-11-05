@@ -97,6 +97,7 @@ public void signup(User user) {
 }
 
     public UserDetails loadUserByUsername(String username) {
+         System.out.println("USERNAME RECEIVED: [" + username + "]");
         return accountRepo.findByUsername(username)
                 .map(SecurityUser::new)
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));

@@ -1,11 +1,10 @@
 package com.bubblebooks.bubblebooks.repositories;
 import com.bubblebooks.bubblebooks.dto.Genresdto;
+import com.bubblebooks.bubblebooks.dto.GenresdtoId;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.UUID;
-
 public interface GenreRepo
-        extends JpaRepository<Genresdto, UUID> {
+        extends JpaRepository<Genresdto, GenresdtoId> {
 
                 
 }

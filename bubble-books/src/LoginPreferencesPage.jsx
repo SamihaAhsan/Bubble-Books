@@ -17,6 +17,7 @@ const genres = [
 function SignupPreferencesPage() {
   const [step, setStep] = useState('preferences')
   const [error, setError] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [selectedGenres, setSelectedGenres] = useState([])
   const [wantedBooks, setWantedBooks] = useState([{ title: '', author: '' }])
 
@@ -35,7 +36,7 @@ function SignupPreferencesPage() {
     )))
   }
 
-  function finishPreferences(event) {
+  async function finishPreferences(event) {
     event.preventDefault()
     setError('')
 
@@ -54,7 +55,38 @@ function SignupPreferencesPage() {
       return
     }
 
-    setStep('complete')
+    setIsSubmitting(true)
+
+    try {
+      const csrfResponse = await fetch('http://localhost:8080/csrf', {
+        credentials: 'include',
+      })
+
+      if (!csrfResponse.ok) {
+        throw new Error('Could not prepare to save your genres. Please try again.')
+      }
+
+      const csrfData = await csrfResponse.json()
+      const response = await fetch('http://localhost:8080/my-genres', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          [csrfData.headerName]: csrfData.token,
+        },
+        body: JSON.stringify(selectedGenres),
+      })
+
+      if (!response.ok) {
+        throw new Error(`Could not save your genres (error ${response.status}). Please try again.`)
+      }
+
+      setStep('complete')
+    } catch (requestError) {
+      setError(requestError.message || 'Could not save your genres. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -148,11 +180,9 @@ function SignupPreferencesPage() {
 
               {error && <p className="signup-error preferences-error" role="alert">{error}</p>}
               <div className="preferences-actions">
-                <button className="button button-primary" type="submit">
-                  Finish setup <span aria-hidden="true">→</span>
-                </button>
-                <button className="skip-preferences-button" type="button" onClick={() => setStep('complete')}>
-                  Skip for now
+                <button className="button button-primary" type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? 'Saving your genres…' : 'Finish setup'}
+                  {!isSubmitting && <span aria-hidden="true">→</span>}
                 </button>
               </div>
             </form>
