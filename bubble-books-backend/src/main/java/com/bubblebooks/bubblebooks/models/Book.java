@@ -22,14 +22,19 @@ public class Book {
 
      private String author_last_name;
      private String summary;
+
+     String[] genre;
     
+public Book() {
 
+}
 
- public Book(String book_name, String author_first_name, String author_last_name, String summary) {
+ public Book(String book_name, String author_first_name, String author_last_name, String summary, String[] genre) {
      this.book_name = book_name;
      this.author_first_name = author_first_name;
      this.author_last_name = author_last_name;
      this.summary = summary;
+     this.genre = genre;
      this.book_id = java.util.UUID.randomUUID();
  }
 
@@ -39,6 +44,7 @@ public class Book {
      this.author_last_name = author_last_name;
      this.summary = summary;
      this.book_id = book_id;
+     this.genre = genre;
  }
 
  

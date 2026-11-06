@@ -27,11 +27,11 @@ public class MyBookRoute {
     
     
   @PostMapping("/my-books")
-    public ResponseEntity<Book> signup(@Valid @RequestBody Book[] books) {
+    public ResponseEntity<Book> signup(@Valid @RequestBody Book[] books, Authentication authentication) {
         for (Book book : books) {
-            bookService.saveMyBooks(book);
+            bookService.saveMyBooks(book, authentication);
         }
-        return ResponseEntity.ok(books[0]);}*/
+        return ResponseEntity.ok(books[0]);}
      
 
        
