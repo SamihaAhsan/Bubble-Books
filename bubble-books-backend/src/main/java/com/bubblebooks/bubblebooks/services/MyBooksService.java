@@ -14,6 +14,8 @@ import com.bubblebooks.bubblebooks.repositories.MyPostingRepos;
 import com.bubblebooks.bubblebooks.models.MyPosting;
 import com.bubblebooks.bubblebooks.repositories.GenreBookRepo;
 import com.bubblebooks.bubblebooks.models.GenretoBook;
+import com.bubblebooks.bubblebooks.models.TitlesInterested;
+import com.bubblebooks.bubblebooks.repositories.TitlesInterestedRepo;
 
 @Service
 public class MyBooksService {
@@ -23,18 +25,28 @@ public class MyBooksService {
     GenreInterestedRepo genreRepo;  
     GenreIDRepo genreIDRepo;
     UserService userService;
+    TitlesInterestedRepo titlesInterestedRepo;
+    TitlesInterested titlesInterested;
 
     GenreBookRepo genreBookRepo;
 
-    MyBooksService(GenreInterestedRepo genreRepo, GenreIDRepo genreIDRepo, UserService userService, BookRepo bookRepo, MyPostingRepos myPostingRepos, GenreBookRepo genreBookRepo) {
-        this.genreRepo = genreRepo;
-        this.genreIDRepo = genreIDRepo;
-        this.userService = userService;
-        this.bookRepo = bookRepo;
-        this.myPostingRepos = myPostingRepos;
-        this.genreBookRepo = genreBookRepo;
-
-    }
+    MyBooksService(
+    GenreInterestedRepo genreRepo,
+    GenreIDRepo genreIDRepo,
+    UserService userService,
+    BookRepo bookRepo,
+    MyPostingRepos myPostingRepos,
+    GenreBookRepo genreBookRepo,
+    TitlesInterestedRepo titlesInterestedRepo
+) {
+    this.genreRepo = genreRepo;
+    this.genreIDRepo = genreIDRepo;
+    this.userService = userService;
+    this.bookRepo = bookRepo;
+    this.myPostingRepos = myPostingRepos;
+    this.genreBookRepo = genreBookRepo;
+    this.titlesInterestedRepo = titlesInterestedRepo;
+}
     public void saveMyGenres(String[] genres, Authentication authentication) {
     UUID authen = userService.accessUserIDString(authentication);
     for (String genre : genres) {
@@ -58,5 +70,12 @@ public class MyBooksService {
     myPostingRepos.save(myPosting);
 
 }
+
+public void saveMyInterestedTitles(UUID book_id, Authentication authentication) {
+    UUID authen = userService.accessUserIDString(authentication);
+    TitlesInterested titlesInterested = new TitlesInterested(authen, book_id);
+    titlesInterestedRepo.save(titlesInterested);
     }
+
+}
 
