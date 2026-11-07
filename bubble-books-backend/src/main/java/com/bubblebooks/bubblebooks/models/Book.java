@@ -7,7 +7,7 @@ import org.hibernate.annotations.UuidGenerator;
 
 import jakarta.persistence.GeneratedValue;
 
-@Entity(name="books")
+
 public class Book {
 
     @Id
@@ -23,7 +23,7 @@ public class Book {
      private String author_last_name;
      private String summary;
 
-     String[] genre;
+     private String[] genre;
     
 public Book() {
 
@@ -86,6 +86,14 @@ public Book() {
 
     public void setSummary(String summary) {
         this.summary = summary;
+    }
+
+    public String[] getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String[] genre) {
+        this.genre = genre;
     }
 
  }

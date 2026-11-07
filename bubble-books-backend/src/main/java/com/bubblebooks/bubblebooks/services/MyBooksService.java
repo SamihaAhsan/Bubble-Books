@@ -12,6 +12,10 @@ import com.bubblebooks.bubblebooks.models.Genre;
 import com.bubblebooks.bubblebooks.models.Book;
 import com.bubblebooks.bubblebooks.repositories.MyPostingRepos;
 import com.bubblebooks.bubblebooks.models.MyPosting;
+import com.bubblebooks.bubblebooks.repositories.GenreBookRepo;
+import com.bubblebooks.bubblebooks.models.GenretoBook;
+import com.bubblebooks.bubblebooks.models.TitlesInterested;
+import com.bubblebooks.bubblebooks.repositories.TitlesInterestedRepo;
 
 @Service
 public class MyBooksService {
@@ -21,14 +25,28 @@ public class MyBooksService {
     GenreInterestedRepo genreRepo;  
     GenreIDRepo genreIDRepo;
     UserService userService;
+    TitlesInterestedRepo titlesInterestedRepo;
+    TitlesInterested titlesInterested;
 
-    MyBooksService(GenreInterestedRepo genreRepo, GenreIDRepo genreIDRepo, UserService userService, BookRepo bookRepo, MyPostingRepos myPostingRepos) {
-        this.genreRepo = genreRepo;
-        this.genreIDRepo = genreIDRepo;
-        this.userService = userService;
-        this.bookRepo = bookRepo;
-        this.myPostingRepos = myPostingRepos;
-    }
+    GenreBookRepo genreBookRepo;
+
+    MyBooksService(
+    GenreInterestedRepo genreRepo,
+    GenreIDRepo genreIDRepo,
+    UserService userService,
+    BookRepo bookRepo,
+    MyPostingRepos myPostingRepos,
+    GenreBookRepo genreBookRepo,
+    TitlesInterestedRepo titlesInterestedRepo
+) {
+    this.genreRepo = genreRepo;
+    this.genreIDRepo = genreIDRepo;
+    this.userService = userService;
+    this.bookRepo = bookRepo;
+    this.myPostingRepos = myPostingRepos;
+    this.genreBookRepo = genreBookRepo;
+    this.titlesInterestedRepo = titlesInterestedRepo;
+}
     public void saveMyGenres(String[] genres, Authentication authentication) {
     UUID authen = userService.accessUserIDString(authentication);
     for (String genre : genres) {
@@ -42,9 +60,22 @@ public class MyBooksService {
     UUID authen = userService.accessUserIDString(authentication);
     Bookdto bookdto = BookMap.toBookdto(book);
     bookRepo.save(bookdto);
-    MyPosting myPosting = new MyPosting(book.getBook_id(), authen, "available");
+    for (String genre : book.getGenre()) {
+        Genre genre_info = genreIDRepo.findByGenre(genre);
+        GenretoBook genreBookEntry = new GenretoBook(bookdto.getBook_id(), genre_info.getGenre_id());
+        genreBookRepo.save(genreBookEntry);
+    }
+    
+    MyPosting myPosting = new MyPosting(bookdto.getBook_id(), authen, "available");
     myPostingRepos.save(myPosting);
 
 }
+
+public void saveMyInterestedTitles(UUID book_id, Authentication authentication) {
+    UUID authen = userService.accessUserIDString(authentication);
+    TitlesInterested titlesInterested = new TitlesInterested(authen, book_id);
+    titlesInterestedRepo.save(titlesInterested);
     }
+
+}
 
