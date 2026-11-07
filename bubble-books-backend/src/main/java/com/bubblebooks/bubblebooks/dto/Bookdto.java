@@ -4,7 +4,9 @@ import org.hibernate.annotations.UuidGenerator;
 import java.util.UUID;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
 
+@Entity(name = "books")
 public class Bookdto {
 
     @Id

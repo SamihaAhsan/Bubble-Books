@@ -12,6 +12,8 @@ import com.bubblebooks.bubblebooks.models.Genre;
 import com.bubblebooks.bubblebooks.models.Book;
 import com.bubblebooks.bubblebooks.repositories.MyPostingRepos;
 import com.bubblebooks.bubblebooks.models.MyPosting;
+import com.bubblebooks.bubblebooks.repositories.GenreBookRepo;
+import com.bubblebooks.bubblebooks.models.GenretoBook;
 
 @Service
 public class MyBooksService {
@@ -22,12 +24,16 @@ public class MyBooksService {
     GenreIDRepo genreIDRepo;
     UserService userService;
 
-    MyBooksService(GenreInterestedRepo genreRepo, GenreIDRepo genreIDRepo, UserService userService, BookRepo bookRepo, MyPostingRepos myPostingRepos) {
+    GenreBookRepo genreBookRepo;
+
+    MyBooksService(GenreInterestedRepo genreRepo, GenreIDRepo genreIDRepo, UserService userService, BookRepo bookRepo, MyPostingRepos myPostingRepos, GenreBookRepo genreBookRepo) {
         this.genreRepo = genreRepo;
         this.genreIDRepo = genreIDRepo;
         this.userService = userService;
         this.bookRepo = bookRepo;
         this.myPostingRepos = myPostingRepos;
+        this.genreBookRepo = genreBookRepo;
+
     }
     public void saveMyGenres(String[] genres, Authentication authentication) {
     UUID authen = userService.accessUserIDString(authentication);
@@ -42,7 +48,13 @@ public class MyBooksService {
     UUID authen = userService.accessUserIDString(authentication);
     Bookdto bookdto = BookMap.toBookdto(book);
     bookRepo.save(bookdto);
-    MyPosting myPosting = new MyPosting(book.getBook_id(), authen, "available");
+    for (String genre : book.getGenre()) {
+        Genre genre_info = genreIDRepo.findByGenre(genre);
+        GenretoBook genreBookEntry = new GenretoBook(bookdto.getBook_id(), genre_info.getGenre_id());
+        genreBookRepo.save(genreBookEntry);
+    }
+    
+    MyPosting myPosting = new MyPosting(bookdto.getBook_id(), authen, "available");
     myPostingRepos.save(myPosting);
 
 }

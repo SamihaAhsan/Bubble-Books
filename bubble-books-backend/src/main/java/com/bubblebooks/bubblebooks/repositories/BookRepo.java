@@ -5,5 +5,7 @@ import java.util.UUID;
 import com.bubblebooks.bubblebooks.dto.Bookdto;
 
 public interface BookRepo
-        extends JpaRepository<Bookdto, UUID> {     
+        extends JpaRepository<Bookdto, UUID> {  
+                
+                
 }
