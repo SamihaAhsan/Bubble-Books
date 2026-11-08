@@ -211,8 +211,17 @@
   background: #f9e4e5;
 }
 
+.genre-save-row {
+  margin-top: 15px;
+}
+
+.genre-save-row .button:disabled {
+  cursor: default;
+  opacity: 0.7;
+  transform: none;
+}
+
 .genre-option:focus-visible,
-.add-book-button:focus-visible,
 .remove-book-button:focus-visible,
 .skip-preferences-button:focus-visible {
   outline: 3px solid #dba0a8;
@@ -223,30 +232,166 @@
   margin-top: 34px;
 }
 
-.wanted-books-list {
+.book-posting-form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-}
-
-.wanted-book-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
-  align-items: end;
   gap: 24px;
-  padding: 19px 21px;
-  border: 1px solid #eee4d9;
-  border-radius: 14px;
-  background: rgba(255, 253, 249, 0.75);
 }
 
-.wanted-book-row .signup-field {
-  gap: 6px;
+.book-posting-form .signup-field {
+  gap: 8px;
 }
 
-.wanted-book-row .signup-field input {
-  height: 42px;
+.book-posting-form .signup-field input,
+.book-posting-form .signup-field textarea {
+  padding: 12px 14px;
+  border: 1px solid #e7ddd1;
+  border-radius: 10px;
+  background: rgba(255, 253, 249, 0.9);
+}
+
+.book-posting-form .signup-field input {
+  height: 48px;
+}
+
+.book-posting-form .signup-field textarea {
+  min-height: 120px;
+  resize: vertical;
+  color: var(--ink);
+  font: inherit;
   font-size: 14px;
+  font-weight: 400;
+}
+
+.book-posting-form .signup-field input:focus,
+.book-posting-form .signup-field textarea:focus {
+  border-color: #c78c8d;
+  box-shadow: 0 0 0 3px rgba(199, 140, 141, 0.15);
+}
+
+.book-author-fields {
+  gap: 24px;
+}
+
+.book-posting-form .genre-fieldset {
+  margin-top: 0;
+}
+
+.wanted-book-search {
+  position: relative;
+  gap: 8px;
+}
+
+.wanted-book-search input {
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid #e7ddd1;
+  border-radius: 10px;
+  background: rgba(255, 253, 249, 0.9);
+}
+
+.wanted-book-search input:focus {
+  border: 1px solid #c78c8d;
+  box-shadow: 0 0 0 3px rgba(199, 140, 141, 0.15);
+}
+
+.book-suggestions {
+  position: absolute;
+  z-index: 2;
+  top: calc(100% + 5px);
+  right: 0;
+  left: 0;
+  overflow: hidden;
+  border: 1px solid #e7ddd1;
+  border-radius: 10px;
+  background: #fffdfa;
+  box-shadow: 0 10px 24px rgba(63, 45, 37, 0.12);
+}
+
+.book-suggestion {
+  width: 100%;
+  min-height: 54px;
+  padding: 9px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  border: 0;
+  border-bottom: 1px solid #f0e9e1;
+  color: var(--ink);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.book-suggestion:last-child {
+  border-bottom: 0;
+}
+
+.book-suggestion:hover,
+.book-suggestion.is-active {
+  background: #fbefed;
+}
+
+.book-suggestion span:first-child {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.book-suggestion span:last-child,
+.book-suggestions-empty {
+  color: var(--muted-ink);
+  font-size: 12px;
+}
+
+.book-suggestions-empty {
+  margin: 0;
+  padding: 14px;
+}
+
+.book-catalog-error {
+  margin: 0;
+  color: #a33d46;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.book-catalog-error button {
+  padding: 0;
+  border: 0;
+  color: var(--rose-dark);
+  background: transparent;
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.selected-wanted-books {
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+}
+
+.selected-wanted-book {
+  min-height: 46px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid #eee4d9;
+  border-radius: 10px;
+  color: var(--ink);
+  background: rgba(255, 253, 249, 0.75);
+  font-size: 13px;
+}
+
+.selected-wanted-book > span > span {
+  color: var(--muted-ink);
 }
 
 .remove-book-button,
@@ -263,23 +408,6 @@
 .remove-book-button:hover,
 .skip-preferences-button:hover {
   color: var(--rose-dark);
-}
-
-.add-book-button {
-  margin-top: 14px;
-  padding: 5px 0;
-  border: 0;
-  color: var(--rose-dark);
-  background: transparent;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.add-book-button span {
-  margin-right: 5px;
-  font-size: 17px;
-  vertical-align: -1px;
 }
 
 .preferences-error {
@@ -376,9 +504,6 @@
     gap: 24px 28px;
   }
 
-  .wanted-book-row {
-    gap: 18px;
-  }
 }
 
 @media (max-width: 520px) {
@@ -392,6 +517,10 @@
 
   .signup-fields {
     grid-template-columns: 1fr;
+    gap: 19px;
+  }
+
+  .book-posting-form .book-author-fields {
     gap: 19px;
   }
 
@@ -410,12 +539,6 @@
 
   .preferences-form legend {
     font-size: 20px;
-  }
-
-  .wanted-book-row {
-    grid-template-columns: 1fr;
-    gap: 13px;
-    padding: 16px;
   }
 
   .remove-book-button {

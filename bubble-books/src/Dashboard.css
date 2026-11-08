@@ -664,6 +664,16 @@
   box-shadow: 0 5px 15px rgba(73, 59, 67, 0.035);
 }
 
+.explore-search-wrap {
+  position: relative;
+  min-width: 0;
+  flex: 1;
+}
+
+.explore-search-wrap .search-input-wrap {
+  width: 100%;
+}
+
 .search-input-wrap {
   min-width: 0;
   height: 44px;
@@ -694,6 +704,73 @@
 
 .search-input-wrap input::placeholder {
   color: #a99f98;
+}
+
+.explore-book-suggestions {
+  position: absolute;
+  z-index: 5;
+  top: calc(100% + 6px);
+  right: 0;
+  left: 0;
+  max-height: 320px;
+  overflow-y: auto;
+  border: 1px solid #eee5df;
+  border-radius: 10px;
+  background: #fffdfb;
+  box-shadow: 0 10px 24px rgba(63, 45, 37, 0.14);
+}
+
+.explore-book-suggestion {
+  width: 100%;
+  min-height: 54px;
+  padding: 9px 14px;
+  border: 0;
+  border-bottom: 1px solid #f1ece7;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3px;
+  color: var(--dash-ink);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.explore-book-suggestion:last-child {
+  border-bottom: 0;
+}
+
+.explore-book-suggestion:hover,
+.explore-book-suggestion.is-active {
+  background: #fbefed;
+}
+
+.explore-book-suggestion span:first-child {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.explore-book-suggestion span:last-child,
+.explore-book-suggestions-message {
+  color: var(--dash-muted);
+  font-size: 11px;
+}
+
+.explore-book-suggestions-message {
+  margin: 0;
+  padding: 13px 14px;
+  line-height: 1.5;
+}
+
+.explore-book-suggestions-message button {
+  padding: 0;
+  border: 0;
+  color: var(--dash-rose);
+  background: transparent;
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 .filter-select select {
