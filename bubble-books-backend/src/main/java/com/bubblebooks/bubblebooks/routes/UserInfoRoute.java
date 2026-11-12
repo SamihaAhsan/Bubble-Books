@@ -8,13 +8,14 @@
 
 // public class UserInfoRoute {
 
-//     @PostMapping("/genre-preferences")
-//     public ResponseEntity<User> signup(@Valid @RequestBody User user) {
-//         System.out.println("Received username: " + user.getUsername());
-//         authService.signup(user);
-//         return ResponseEntity.ok(user);}
+//     @PostMapping("/gmail-change")
+//     public ResponseEntity<String> gmail_change(@Valid @RequestBody String newGmail) {
+//         System.out.println("Received new Gmail: " + newGmail);
+//         authService.gmail_change(newGmail);
+//         return ResponseEntity.ok("Gmail changed successfully");
+//     }
 
-//      @PostMapping("/book-preferences")
+//      @GetMapping("/gmail")
 //     public ResponseEntity<User> signup(@Valid @RequestBody User user) {
 //         System.out.println("Received username: " + user.getUsername());
 //         authService.signup(user);
