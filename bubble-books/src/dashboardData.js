@@ -132,12 +132,6 @@ export const books = [
   },
 ]
 
-export const requestItems = [
-  { id: 1, title: 'The Midnight Library', author: 'Matt Haig', owner: 'Ella P.', status: 'Awaiting reply', tone: 'plum' },
-  { id: 2, title: 'A Court of Thorns and Roses', author: 'Sarah J. Maas', owner: 'Priya S.', status: 'Accepted', tone: 'rose' },
-  { id: 3, title: 'The House in the Cerulean Sea', author: 'TJ Klune', owner: 'Morgan D.', status: 'Completed', tone: 'blue' },
-]
-
 export const navigation = [
   { id: 'discover', label: 'Discover', icon: '⌂' },
   { id: 'explore', label: 'Explore Books', icon: '⌕' },

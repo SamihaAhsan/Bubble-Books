@@ -10,7 +10,7 @@ function Dashboard() {
   const [activePage, setActivePage] = useState('discover')
   const [search, setSearch] = useState('')
   const [selectedGenre, setSelectedGenre] = useState('All genres')
-  const [requestFilter, setRequestFilter] = useState('All requests')
+  const [requestDirection, setRequestDirection] = useState('sent')
   const [searchingTitles, setSearchingTitles] = useState([])
   const [notice, setNotice] = useState('')
   const [settings, setSettings] = useState({
@@ -71,8 +71,8 @@ function Dashboard() {
       case 'requests':
         return (
           <RequestsPage
-            requestFilter={requestFilter}
-            onRequestFilterChange={setRequestFilter}
+            requestDirection={requestDirection}
+            onRequestDirectionChange={setRequestDirection}
             onRequest={showNotice}
           />
         )
