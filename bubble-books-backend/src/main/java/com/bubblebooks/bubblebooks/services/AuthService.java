@@ -102,31 +102,6 @@ public void signup(User user) {
                 .map(SecurityUser::new)
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
     }
-/* 
-    public User login(Logindto login) {
-        
-        // checks whether information meets requirments
-        if (login.getUsername() == null || login.getUsername().isEmpty()) {
-            throw new IllegalArgumentException("Username can't be null or empty");
-        }
-        
-        if (!(accountRepo.existsByUsername(login.getUsername()))){
-            throw new IllegalArgumentException("Username does not exist");
-        }
-        
-        if (!accountRepo.findByUsername(login.getUsername()).getPassword().equals(login.getPassword())) {
-            throw new IllegalArgumentException("Invalid password");
-        }
-        return new User(
-            accountRepo.findByUsername(login.getUsername()).getId(),
-            accountRepo.findByUsername(login.getUsername()).getUsername(),
-            accountRepo.findByUsername(login.getUsername()).getFirstName(),
-            accountRepo.findByUsername(login.getUsername()).getLastName(),
-            accountRepo.findByUsername(login.getUsername()).getCity(),
-            accountRepo.findByUsername(login.getUsername()).getCountry(),
-            accountRepo.findByUsername(login.getUsername()).getEmail(),
-            accountRepo.findByUsername(login.getUsername()).getPassword()
-        );
-    }*/
+
 
 }

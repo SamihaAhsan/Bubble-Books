@@ -27,6 +27,14 @@ public class Genre {
         this.genre_id = genre_id;
     }
 
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
     
     
 
