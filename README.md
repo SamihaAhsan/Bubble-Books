@@ -12,6 +12,13 @@ At the core of the platform is a **dual-interest trade recommendation algorithm*
 **Current focus:** Building the trade recommendation engine and completing the end-to-end book trading workflow.
 
 ---
+## Inspiration
+
+I used to work part-time at a library. During that time we would get MANY patrons with their own books that they wanted to donate to the library. The hope was to recirculate the book to someone else so that someone new can embark on the adventure the book gave. Unfortunately very few of the books we were given would actually make its way into the library system due to a multitude of small factors such as a title being less popular or not having enough space at the library. Therefore many stories were lost and unable to make it back into circulation.
+
+I've noticed this a lot with books. Stories are supposed to be passed on but physical things like books often have a one way path to the recycling plant. Someone buys a book and intends to give it to someone else somehow, but it's very hard to find the people that are actually interested in the story you want to pass on. Therefore I wanted to find a way so that these books are always able to find a new home in a convenient way.  
+
+That's what inspired me to build Bubble Books: a platform that helps readers find new homes for the books they've already enjoyed while also finding their next reads! By connecting people through their reading interests and the books they have available to trade, I hope to make it easier for stories to keep moving from one reader to the next, rather than gathering dust on a shelf or ending up in a recycling bin.
 
 ## What Bubble Books Is Building
 
